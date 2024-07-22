@@ -56,5 +56,5 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "UniSideGmae.sln"
+    "dotnet.defaultSolution": "UniSideGame.sln"
 }
