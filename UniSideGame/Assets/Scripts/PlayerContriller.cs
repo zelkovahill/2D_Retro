@@ -1,12 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UIElements;
-
-
 
 public class PlayerContriller : MonoBehaviour
 {
+    public int score = 0; // 점수
+
     [Header("이동")]
     private float axisH = 0.0f;   // 입력
     public float speed = 3.0f;   // 이동 속도
@@ -75,7 +74,7 @@ public class PlayerContriller : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if(gameState != "playing")
+        if (gameState != "playing")
         {
             return;
         }
@@ -140,6 +139,18 @@ public class PlayerContriller : MonoBehaviour
         {
             GameOver();
         }
+        else if (collision.CompareTag("ScoreItem"))
+        {
+            // 점수 아이템
+            // ItemData 가져오기
+            ItemData item = collision.GetComponent<ItemData>();
+
+            // 점수 획득
+            score = item.value;
+
+            // 아이템 제거
+            Destroy(collision.gameObject);
+        }
     }
 
     // 끝
@@ -153,7 +164,7 @@ public class PlayerContriller : MonoBehaviour
     // 게임 오버
     public void GameOver()
     {
-       anim.Play(deadAnime);
+        anim.Play(deadAnime);
 
         gameState = "gameover";
         GameStop();

@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Goal
   - Dead
+  - Switch
   layers:
   - Default
   - TransparentFX
